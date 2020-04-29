@@ -1,4 +1,6 @@
-class ClickedController < ActionController::Metal
+class ClickedController < ApplicationController
+  before_action :validate_affiliate_access_key
+
   def index
     url = CGI.unescape(params['u']).gsub(' ', '+') rescue nil
     if url.present?
@@ -16,5 +18,12 @@ class ClickedController < ActionController::Metal
       Click.log(url, query, queried_at_gmt, click_ip, affiliate_name, position, results_source, vertical, locale, user_agent, model_id)
     end
     self.response_body = ""
+  end
+
+  private
+
+  def validate_affiliate_access_key
+    affiliate = Affiliate.find_by_name params['a']
+    return head :unauthorized if affiliate&.api_access_key != params['access_key']
   end
 end
