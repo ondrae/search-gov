@@ -23,7 +23,9 @@ class ClickedController < ApplicationController
   private
 
   def validate_affiliate_access_key
-    affiliate = Affiliate.find_by_name params['a']
+    return head :unauthorized unless params['a'] && params['access_key']
+
+    affiliate = Affiliate.find_by name: params['a']
     return head :unauthorized if affiliate&.api_access_key != params['access_key']
   end
 end

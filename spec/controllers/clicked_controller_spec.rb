@@ -48,5 +48,21 @@ describe ClickedController do
         expect(response.status).to eq 401
       end
     end
+
+    context 'without an affiliate name' do
+      it 'returns a 401' do
+        get :index, params: params.without(:a)
+
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'without an access key and and affiliate name' do
+      it 'returns a 401' do
+        get :index, params: params.without(:access_key).without(:a)
+
+        expect(response.status).to eq 401
+      end
+    end
   end
 end
