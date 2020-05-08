@@ -189,6 +189,11 @@ Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
   page.should have_link(text, :href => url)
 end
 
+# Single quote!
+Then /^The "([^"]*)" link should have a data-click attribute of '([^']*)'/ do |text, data_attribute|
+  page.should have_css("a[data-click='#{data_attribute}']", text: text)
+end
+
 Then /^a Tweet click should be logged/ do
   Rails.logger.should_receive(:info).with("[Click] ")
 end

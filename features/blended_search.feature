@@ -57,6 +57,7 @@ Feature: Blended Search
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
     And I should see "blessed and safe"
+    And the "Hippopotamus item" link should have a data-click attribute of '{"i":1,"p":1,"s":"BOOS"}'
 
     When I follow "Last year"
     Then the "Enter your search term" field should contain "items"
