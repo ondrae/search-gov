@@ -57,6 +57,10 @@ Feature: Blended Search
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
     And I should see "blessed and safe"
+    And the "search" div should have the data attribute of 'l="en"'
+    And the "search" div should have the data attribute of 'q="items"'
+    And the "search" div should have the data attribute of 't'
+    And the "search" div should have the data attribute of 'v="blended"'
     And the "Hippopotamus item" link should have a data-click attribute of '{"i":1,"p":1,"s":"BOOS"}'
 
     When I follow "Last year"

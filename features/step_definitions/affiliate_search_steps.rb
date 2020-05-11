@@ -190,7 +190,12 @@ Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
 end
 
 # Single quote!
-Then /^The "([^"]*)" link should have a data-click attribute of '([^']*)'/ do |text, data_attribute|
+Then /^the "([^"]*)" div should have the data attribute of '([^']*)'$/ do |id, data_attribute|
+  page.should have_css("div[data-#{data_attribute}]", id: id)
+end
+
+# Single quote!
+Then /^the "([^"]*)" link should have a data-click attribute of '([^']*)'$/ do |text, data_attribute|
   page.should have_css("a[data-click='#{data_attribute}']", text: text)
 end
 
