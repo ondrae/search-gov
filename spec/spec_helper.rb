@@ -10,6 +10,7 @@ require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
 require 'webmock/rspec'
+require 'webdrivers/chromedriver'
 
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -125,3 +126,8 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.default_driver = :selenium_chrome_headless
+Capybara.app_host = "http://localhost:51835"
+Capybara.server_host = "localhost"
+Capybara.server_port = "51835"
