@@ -1,3 +1,4 @@
+require 'cucumber/rspec/doubles'
 require 'simplecov'
 SimpleCov.command_name 'Cucumber'
 
