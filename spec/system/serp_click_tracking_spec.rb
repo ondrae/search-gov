@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Click tracking', type: :feature, js: true do
+describe 'Click tracking', js: true do
   let!(:affiliate) { affiliates(:basic_affiliate) }
   let(:click_mock) { instance_double(ClickSerp, valid?: true) }
 
